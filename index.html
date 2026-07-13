@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoreBid</title>
+<meta name="description" content="CoreBid — Reykjavík · EEA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Fonts from Google CDN for the prototype; self-host the woff2 files for strict EEA data-residency. -->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:    #0F2230;   /* same deep slate as the full site — brand continuity */
+    --text:  #E8EEF2;
+    --muted: #6C8393;
+    --teal:  #17A2A8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    -webkit-font-smoothing: antialiased;
+    /* barely-there vignette so the centre sits in a little pool of light */
+    background-image: radial-gradient(120% 90% at 50% 42%, rgba(23,162,168,.06), transparent 60%);
+  }
+
+  main { text-align: center; }
+
+  .mark {
+    font-size: clamp(44px, 10vw, 92px);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    line-height: 1;
+  }
+  /* the dot is a living status light — echoes the "watching" pulse on the full site */
+  .mark .dot {
+    color: var(--teal);
+    display: inline-block;
+    animation: breathe 3.2s ease-in-out infinite;
+  }
+  .mark .tld {
+    color: var(--muted);
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    font-size: .55em;
+    letter-spacing: 0;
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: .35; transform: scale(.9); }
+    50%      { opacity: 1;   transform: scale(1); }
+  }
+
+  .line {
+    margin-top: 28px;
+    font-size: clamp(15px, 2.2vw, 18px);
+    color: var(--text);
+    opacity: .85;
+    max-width: 32ch;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+
+  .foot {
+    margin-top: 46px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .foot a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .foot a:hover { color: var(--text); border-color: var(--teal); }
+
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 4px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mark .dot { animation: none; opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+  <main>
+    <div class="mark">CoreBid<span class="dot">.</span><span class="tld">is</span></div>
+
+    <!-- One quiet line. Swap or delete freely — see notes. Promises nothing. -->
+    <p class="line">Everyone is adopting AI. Almost no one is watching what happens next.</p>
+
+    <div class="foot">
+      Reykjavík · EEA · 2026 &nbsp;—&nbsp; <a href="mailto:hello@corebid.is">hello@corebid.is</a>
+    </div>
+  </main>
+</body>
+</html>
